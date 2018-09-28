@@ -7,7 +7,18 @@ Return None if the matrix product does not exist.
 As with math, assume that indices are in [row][column] format, so each inner list is a row.
 """
 def matrix_multiply(arr0, arr1):
-	pass
+	if len(arr0) != len(arr1[0]):
+		return None
+
+
+	newArr = [0 in range(len(arr0[0]))][0 in range(len(arr1))]
+	for x in len(arr0):
+		for y in len(arr1):
+			newArr[x][y] += arr0[x][y] * arr1[y][x]
+	return newArr
+
+
+
 
 """
 nth_largest_element
@@ -16,7 +27,15 @@ Given an input list `arr`, and index `n`, return the nth largest element.
 Avoid using built-in sorting methods.
 """
 def nth_largest_element(arr, n):
-	pass
+	max = arr[0]
+	while n > 0:
+		for x in arr:
+			if x > max:
+				max = x
+		for x in range(len(arr)):
+			arr.remove(max)
+		n -= 1
+	return max
 
 """
 reverse_block
@@ -32,7 +51,8 @@ Example:
 
 """
 def reverse_block(arr, n):
-	pass
+	for x in range(n):
+
 
 """
 subset_sum
@@ -71,5 +91,13 @@ Example:
 		[a,b,c,d,e, j,o,t,y, x,w,v,u, p,k,f, g,h,i, n,s, r,q, l, m]
 """
 def spiral_matrix(arr):
+
+
 	pass
 
+#arr0 = [[1,2,3],[4,5,6]]
+#arr1 = [[7,8],[9,10],[11, 12]]
+array = [1,2,3,4,5,5,4,8]
+#print(matrix_multiply(arr0, arr1))
+
+print(nth_largest_element(array,3))
