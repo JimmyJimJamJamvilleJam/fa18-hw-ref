@@ -9,12 +9,11 @@ As with math, assume that indices are in [row][column] format, so each inner lis
 def matrix_multiply(arr0, arr1):
 	if len(arr0) != len(arr1[0]):
 		return None
-
-
-	newArr = [0 in range(len(arr0[0]))][0 in range(len(arr1))]
-	for x in len(arr0):
-		for y in len(arr1):
-			newArr[x][y] += arr0[x][y] * arr1[y][x]
+	newArr = [[0 for col in range(len(arr0))] for row in range(len(arr1[0]))]
+	for x in range(len(arr0)):
+		for y in range(len(arr1[0])):
+			for z in range(len(arr1)):
+				newArr[x][y] += arr0[x][z] * arr1[z][y]
 	return newArr
 
 
@@ -27,12 +26,18 @@ Given an input list `arr`, and index `n`, return the nth largest element.
 Avoid using built-in sorting methods.
 """
 def nth_largest_element(arr, n):
-	max = arr[0]
+	if n <= 0:
+		return None
+	if arr == None:
+		return None
+	if n > len(arr):
+		return None
 	while n > 0:
+		max = arr[0]
 		for x in arr:
 			if x > max:
 				max = x
-		for x in range(len(arr)):
+		for x in range(arr.count(max)):
 			arr.remove(max)
 		n -= 1
 	return max
@@ -51,8 +56,26 @@ Example:
 
 """
 def reverse_block(arr, n):
-	for x in range(n):
-
+	print(arr)
+	newArr = []
+	count = 0;
+	for x in range(int(len(arr) / n)):
+		print(int(len(arr) / n), x)
+		tempArr = []
+		for y in range(n):
+			print(y,count,arr[y + count])
+			tempArr.append(arr[y + count])
+		tempArr.reverse()
+		for num in tempArr:
+			newArr.append(num)
+		count += n
+	tempArr = []
+	for x in range(len(arr) % n):
+		print(arr[len(arr) - x - 1])
+		tempArr.append(arr[len(arr) - x - 1])
+	for num in tempArr:
+		newArr.append(num)
+	return newArr
 
 """
 subset_sum
@@ -73,7 +96,11 @@ Example 2:
 		False
 """
 def subset_sum(arr, target):
-	pass
+	for x in arr:
+		arr1 = arr.remove(x)
+		for y in arr1:
+			pass
+
 
 """
 spiral_matrix
@@ -91,13 +118,14 @@ Example:
 		[a,b,c,d,e, j,o,t,y, x,w,v,u, p,k,f, g,h,i, n,s, r,q, l, m]
 """
 def spiral_matrix(arr):
-
-
 	pass
 
-#arr0 = [[1,2,3],[4,5,6]]
-#arr1 = [[7,8],[9,10],[11, 12]]
-array = [1,2,3,4,5,5,4,8]
-#print(matrix_multiply(arr0, arr1))
+arr0 = [[1,2,3],[4,5,6]]
+arr1 = [[7,8],[9,10],[11, 12]]
+array = [1,2,3,4,5,5,4,8,10,12,13]
+narr = []
+narr.append(array[0:3])
+narr.append(array[3:6])
+print(reverse_block(array,4))
 
-print(nth_largest_element(array,3))
+#print(len(array) % 4)
