@@ -118,6 +118,10 @@ Example:
 		[a,b,c,d,e, j,o,t,y, x,w,v,u, p,k,f, g,h,i, n,s, r,q, l, m]
 """
 def spiral_matrix(arr):
+	newArr = []
+	for col in range(len(arr)):
+		newArr.append(arr[0][col])
+
 	pass
 
 arr0 = [[1,2,3],[4,5,6]]
