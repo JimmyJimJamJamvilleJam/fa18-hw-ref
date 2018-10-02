@@ -63,7 +63,7 @@ Example:
 def reverse_block(arr, n):
     print(arr)
     newArr = []
-    count = 0;
+    count = 0
     for x in range(int(len(arr) / n)):
         print(int(len(arr) / n), x)
         tempArr = []
@@ -101,10 +101,17 @@ Example 2:
 	Return:
 		False
 """
-
+import random
 
 def subset_sum(arr, target):
-    pass
+    for x in range(100000):
+        randarray = random.sample(arr, random.randint(1, len(arr)))
+        sum = 0
+        for y in randarray:
+            sum += y
+        if sum == target:
+            return True
+    return False
 
 
 """
@@ -154,12 +161,12 @@ def spiral_matrix(arr):
 
 arr0 = [[1, 2, 3], [4, 5, 6]]
 arr1 = [[7, 8], [9, 10], [11, 12]]
-array = [1, 2, 3, 4, 5, 5, 4, 8, 10, 12, 13]
+array = [1, 2, 3, 4, 5, 5, 4, 8, 10, 12, 13, 1, 2, 3, 4, 5, 5, 4, 8, 10, 12, 13]
 test = [[1, 2, 3, 4, 5],
         [16, 17, 18, 19, 6],
         [15, 24, 25, 20, 7],
         [14, 23, 22, 21, 8],
         [13, 12, 11, 10, 9]]
-print(spiral_matrix(test))
-
+#print(spiral_matrix(test))
+subset_sum(array, 100)
 # print(len(array) % 4)
