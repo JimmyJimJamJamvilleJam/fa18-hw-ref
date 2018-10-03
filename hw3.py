@@ -104,7 +104,7 @@ Example 2:
 import random
 
 def subset_sum(arr, target):
-    for x in range(100000):
+    for x in range(math.log(math.factorial(len(arr))):
         randarray = random.sample(arr, random.randint(1, len(arr)))
         sum = 0
         for y in randarray:
